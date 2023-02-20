@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,600;1,500&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div><br>
+        <div class="container" >
+            <div class="flex-container">
+                
+                <div class="emp-detail-text">Employee Details</div>
+                
+                <div style="margin-left: 65%;" class="float-right">
+                     <button  [routerLink]="['/add']" routerLinkActive="router-link-active" class="btn btn-success">+AddEmployee</button>
+                </div>
+        </div>
+        </div>
+    
+        <div class="table-responsive " style="margin-top: 1%;">
+            <table id="display" class="table table-striped  ">
+                <thead>
+                   <th scope="col"></th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Department</th>
+                    <th scope="col">Salary</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">Actions</th>
+                </thead>
+               
+            </table>
+        </div>
+    </div>
+    
+</body>
+</html>
