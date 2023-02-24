@@ -1,59 +1,71 @@
 <div id="formId" class="form-content">
-    <form class="form" >
+    <form class="form" [formGroup]="employeeForm" (ngSubmit)="submitForm()">
         <div class="form-head">Employee Payroll form</div>
         <div class="row-content" >
             <label class="label text" for="name">Name</label>
-            <input class="input" type="text" id="name" name="name" placeholder="Your name.." required>
+            <input class="input" type="text" id="name" formControlName="name" placeholder="Your name.." required>
         </div><br>
 
         <div class="row-content">
-            <label class="label text" for="profile">Profile image</label>
-            <div class="profile-radio-content">
-                <label>
-                    <input type="radio" id="profile1" name="profile" value="./assets/profile-images/Ellipse -3.png">
-                    <img class="profile" id="image1" src="./assets/first.png">
-                </label>
-                <label style="margin-left: 20px;">
-                    <input type="radio" id="profile2" name="profile"  value="./assets/profile-images/Ellipse 1.png">
-                    <img class="profile" id="image2" src="./assets/second.png">
-                </label>
-                <label style="margin-left: 20px;">
-                    <input type="radio" id="profile3" name="profile"  value="./assets/profile-images/Ellipse -8.png">
-                    <img class="profile" id="image3" src="./assets/third.png">
-                </label>
-                <label style="margin-left: 20px;">
-                    <input type="radio" id="profile4" name="profile" value="./assets/profile-images/Ellipse -7.png"s>
-                    <img class="profile" id="image4" src="./assets/fourth.png">
-                </label>
-            </div>
-        </div><br>
+          <label class="label text" for="profile">Profile Image </label>
+          <div class="profile-radio-content">
+            <mat-radio-group formControlName="profilePic">
+              <mat-radio-button class=profile-width id="profile1" name="profile" color="primary"
+                value="../assets/first.png">
+                <img class="profile" id='image1' src="../assets/first.png">
+              </mat-radio-button>
+              <mat-radio-button class=profile-width id="profile2" name="profile" color="primary"
+                value="../assets/second.png">
+                <img class="profile" id='image2' src="../assets/second.png">
+              </mat-radio-button>
+              <mat-radio-button class=profile-width id="profile3" name="profile" color="primary"
+                value="../assets/third.png">
+                <img class="profile" id='image3' src="../assets/third.png">
+              </mat-radio-button>
+              <mat-radio-button class=profile-width id="profile4" name="profile" color="primary"
+                value="../assets/fourth.png">
+                <img class="profile" id='image4' src="../assets/fourth.png">
+              </mat-radio-button>
+             
+            </mat-radio-group>
+          </div>
+        </div>
+    <br>
         <div class="row-content">
             <label class="label text" for="gender">Gender</label>
             <div>
-                <input type="radio" id="male" name="gender" value="male">
-                <label class="text" for="male">male</label>
-                <input type="radio" id="female" name="gender" value="female" style="margin-left: 30px;">
-                <label class="text" for="female">female</label>
+              <mat-radio-group formControlName="gender">
+                <mat-radio-button type="radio" name="gender" color="primary" value="male" required>
+                  <label class="text" for="male">Male</label>
+                </mat-radio-button>
+                <mat-radio-button type="radio" name="gender" color="primary" value="female" required>
+                  <label class="text" for="female">Female</label>
+                </mat-radio-button>
+              </mat-radio-group>
             </div>
-        </div><br>
+          </div>
+      <br>
         <div class="row-content">
-            <label class="label text" for="department" >Department</label>
-            <div>
-                <section >
-                    <mat-checkbox>HR</mat-checkbox>
-                    <mat-checkbox class="checkbox"  style="margin-left: 30px;">Sales</mat-checkbox>
-                    <mat-checkbox class="checkbox"  style="margin-left: 30px;">Finance</mat-checkbox>
-                    <mat-checkbox class="checkbox"  style="margin-left: 30px;">Engineer</mat-checkbox>
-                    <mat-checkbox class="checkbox"  style="margin-left: 30px;"s>Other</mat-checkbox>
-                </section>
+            <label class="label text" for="department">Department</label>
+            <div *ngFor="let department of departments">
+              <mat-checkbox #checkbox class="checkbox" type="checkbox" color="primary" [value]="department.value"
+                (change)="onDepartmentChange($event)" [checked]="department.checked">
+                <label class="text">{{department.name}}</label>
+              </mat-checkbox>
             </div>
-        </div><br>
-        <div class="row-content">
-            <label class="label text" for="salary">Salary</label>
-            <mat-slider  thumbLabel tickInterval="10000" min=5000 max=500000 style="width: 50%;" ></mat-slider>
-            <output class="salary-output text" for="salary"></output>
-        </div><br>
-        <div class="row-content">
+          </div>
+      <br>
+      <div class="row-content">
+        <label class="label text" for="salary">Choose your Salary </label>
+        <mat-slider thumbLabel [displayWith]="formatLabel" #salaryOutput (change)="updateSetting($event)" color="primary"
+          tickInterval="1000" aria-label="units" class="salary-input" name="salary" min="300000" max="500000" step="1000"
+          value="salary" formControlName="salary">
+          
+        </mat-slider>
+      </div>
+  
+  <br>
+        <div class="row-content" formControlName="startDate">
             <label class="label text" for="startDate">Start Date</label>
             <div>
                 <select id="day" name="Day" >
@@ -113,9 +125,17 @@
                 
             </div>
         </div><br>
-        <div class="row-content">
+        <!-- <div class="row-content">
+          <label class="label text" for="startDate"> Start Date </label>
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="startDate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div> -->
+        <div class="row-content" formControlName="note">
             <label class="label text" for="notes">Notes</label>
-            <input id="note" class="input" name="note"  placeholder="" style="height: 100px">
+            <input id="note" class="input" name="note"  placeholder="" style="height: 100px" formControlName="note">
         </div><br>
         <div class="buttonParent">
             <button [routerLink]="['']" routerLinkActive="router-link-active" class="btn btn-outline-primary">Back</button>

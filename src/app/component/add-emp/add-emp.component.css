@@ -200,8 +200,7 @@ select{
     }
 
     mat-slider {
-        width: 50%;
-        height: 20%;
-     }
+        width: 300px;
+      }
       
 }

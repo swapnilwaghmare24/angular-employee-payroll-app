@@ -9,10 +9,11 @@ import { AddEmpComponent } from './component/add-emp/add-emp.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import { MatSliderModule } from '@angular/material/slider';
+import {MatSliderModule} from '@angular/material/slider';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { HttpClientModule } from '@angular/common/http';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatSliderModule,
     MatFormFieldModule,
     MatDatepickerModule,
-    HttpClientModule
+    HttpClientModule,
+    MatRadioModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
