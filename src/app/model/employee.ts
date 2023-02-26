@@ -1,7 +1,7 @@
 export class Employee {
     id!: number;
     name!: string;
-    department!: string[];
+    departments!: string[];
     profile!: string;
     gender!: string;
     salary!: string;

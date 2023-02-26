@@ -14,12 +14,18 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { HttpClientModule } from '@angular/common/http';
 import {MatRadioModule} from '@angular/material/radio';
+import { UpdateEmpComponent } from './component/update-emp/update-emp.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    AddEmpComponent
+    AddEmpComponent,
+    UpdateEmpComponent,
+    
+   
   ],
   imports: [
     BrowserModule,

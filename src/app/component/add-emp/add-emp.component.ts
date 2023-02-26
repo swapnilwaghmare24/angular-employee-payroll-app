@@ -39,9 +39,9 @@ name: new FormControl('', [Validators.required,
                       Validators.minLength(3)]),
 profilePic: new FormControl('', Validators.required),
 gender: new FormControl('', Validators.required),
-department: new FormArray([], Validators.required),
+departments: new FormArray([], Validators.required),
 salary: new FormControl('', Validators.required),
-startDate: new FormControl('', Validators.required),
+date: new FormControl('', Validators.required),
 note: new FormControl('', Validators.required)
 })
 }
@@ -53,7 +53,7 @@ note: new FormControl('', Validators.required)
   onDepartmentChange(event: any){
     const departmentValue = event.source.value
     const selectedDepartment = event.checked
-    const departmentArray: FormArray = this.employeeForm.get('department') as FormArray;
+    const departmentArray: FormArray = this.employeeForm.get('departments') as FormArray;
 
 
     if (selectedDepartment) {
@@ -65,7 +65,7 @@ note: new FormControl('', Validators.required)
   }
   salary: any = 400000;
   updateSetting(event: any) {
-    this.salary = event.value;
+    this.salary = event.target.value;
   }
 
 
@@ -104,9 +104,9 @@ note: new FormControl('', Validators.required)
   
   submitForm(){
     console.log(this.employeeForm.value)
-    this.httpService.addEmployeeData(this.employee).subscribe(response => {
+    this.httpService.addEmployeeData(this.employeeForm.value).subscribe(response => {
       console.log(response)
-      this.router.navigate(['home'])
+      this.router.navigate([''])
     })
    }
 

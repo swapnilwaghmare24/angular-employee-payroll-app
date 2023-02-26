@@ -1,9 +1,9 @@
 <div class="main-content">
     <div class="header-content">
-      <div class="emp-detail-text">
+      <div class="md-title">
         Employee Details <div class="emp-count">{{employeeCount}}</div>
       </div>
-      <a class="add-button" routerLink="/app-add-emp">
+      <a class="add-button" routerLink="add">
        +Add User</a>
     </div>
   
@@ -11,7 +11,7 @@
     <div class="table-main">
   
   
-      <table id ="table-display" class="table">
+      <table id ="display" class="table">
           <tr>
               <th></th>
               <th>Name</th>
@@ -29,7 +29,7 @@
               <td>{{employee.gender}}</td>
               <td>
                   <div class="dept-label">
-                      {{employee.department}}
+                      {{employee.departments}}
                   </div>
               </td>
               <td>{{employee.salary}}</td>

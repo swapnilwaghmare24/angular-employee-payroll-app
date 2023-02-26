@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
 
 
 editById(Id: number) {
- 
+  this.router.navigate(['update', Id]);
 }
 
 }

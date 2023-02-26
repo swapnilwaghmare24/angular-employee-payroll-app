@@ -13,8 +13,8 @@ export class EmployeeService {
   baseUrl = "http://localhost:8080/employeepayrollservice"
 
 
-  addEmployeeData(body: any): Observable<any> {
-    return this.http.post(this.baseUrl + "/add", body);
+  addEmployeeData(obj: any): Observable<any> {
+    return this.http.post(this.baseUrl + "/addemp", obj);
   }
 
   getEmployeeData(): Observable<any> {
@@ -27,5 +27,9 @@ export class EmployeeService {
    
   deleteById(employeeId:number): Observable<any> {
     return this.http.delete("http://localhost:8080/employeepayrollservice/delete/"+employeeId);
+  }
+
+  getEmployeeById(employeeId:number): Observable<any> {
+    return this.http.delete("http://localhost:8080/employeepayrollservice/get/"+employeeId);
   }
 }

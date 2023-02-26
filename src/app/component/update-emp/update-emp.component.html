@@ -1,28 +1,28 @@
 <div id="formId" class="form-content">
-    <form class="form" [formGroup]="employeeForm" (ngSubmit)="submitForm()">
+    <form class="form" (ngSubmit)="submitForm()">
         <div class="form-head">Employee Payroll form</div>
         <div class="row-content" >
             <label class="label text" for="name">Name</label>
-            <input class="input" type="text" id="name" formControlName="name" placeholder="Your name.." required>
+            <input class="input" type="text" id="name" name="name" [(ngModel)]="employee.name" placeholder="Your name.." required>
         </div><br>
 
         <div class="row-content">
           <label class="label text" for="profile">Profile Image </label>
           <div class="profile-radio-content">
-            <mat-radio-group formControlName="profilePic">
-              <mat-radio-button class=profile-width id="profile1" name="profile" color="primary"
+            <mat-radio-group >
+              <mat-radio-button class=profile-width id="profile1" name="profile" color="primary" [(ngModel)]="employee.profile"
                 value="../assets/first.png">
                 <img class="profile" id='image1' src="../assets/first.png">
               </mat-radio-button>
-              <mat-radio-button class=profile-width id="profile2" name="profile" color="primary"
+              <mat-radio-button class=profile-width id="profile2" name="profile" color="primary" [(ngModel)]="employee.profile"
                 value="../assets/second.png">
                 <img class="profile" id='image2' src="../assets/second.png">
               </mat-radio-button>
-              <mat-radio-button class=profile-width id="profile3" name="profile" color="primary"
+              <mat-radio-button class=profile-width id="profile3" name="profile" color="primary" [(ngModel)]="employee.profile"
                 value="../assets/third.png">
                 <img class="profile" id='image3' src="../assets/third.png">
               </mat-radio-button>
-              <mat-radio-button class=profile-width id="profile4" name="profile" color="primary"
+              <mat-radio-button class=profile-width id="profile4" name="profile" color="primary" [(ngModel)]="employee.profile"
                 value="../assets/fourth.png">
                 <img class="profile" id='image4' src="../assets/fourth.png">
               </mat-radio-button>
@@ -34,9 +34,9 @@
     <div class="row-content">
       <label class="label text" for="gender">Gender</label>
       <div>
-          <input type="radio" id="male" formControlName="gender" value="male">
+          <input type="radio" id="male" [(ngModel)]="employee.gender"  name="gender" value="male">
           <label class="text-gender" for="male">Male</label>
-          <input type="radio" id="female" formControlName="gender" value="female">
+          <input type="radio" id="female" [(ngModel)]="employee.gender"  name="gender" value="female">
           <label class="text-gender" for="female">Female</label>
       </div>
   </div>
@@ -45,7 +45,7 @@
             <label class="label text" for="departments">Department</label>
             <div *ngFor="let department of departments">
               <mat-checkbox #checkbox class="checkbox" type="checkbox" color="primary" [value]="department.value"
-                (change)="onDepartmentChange($event)" [checked]="department.checked">
+              [(ngModel)]="employee.departments" name="departemnts" (change)="onDepartmentChange($event)" [checked]="department.checked">
                 <label class="text">{{department.name}}</label>
               </mat-checkbox>
             </div>
@@ -53,7 +53,7 @@
       <br>
       <div class="row-content">
         <label class="label text" for="salary">Salary</label>
-        <input class="input" type="range" id="salary" formControlName="salary" value="salary" (change)="updateSetting($event)" 
+        <input class="input" type="range" id="salary" name="salary" [(ngModel)]="employee.salary" value="salary" (change)="updateSetting($event)" 
         min="300000" max="500000" step="1000"  >
             <p class="salary-output" for="salary" >{{salary}}</p>
     </div>
@@ -122,7 +122,7 @@
         <div class="row-content">
           <label class="label text" for="startDate">Start Date</label>
           <div>
-              <input type="date" id="startDate" formControlName="date">
+              <input type="date" id="startDate" [(ngModel)]="employee.date">
           </div>
       </div>
         <!-- <div class="row-content">
@@ -133,9 +133,9 @@
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
         </div> -->
-        <div class="row-content" formControlName="note">
+        <div class="row-content" >
             <label class="label text" for="notes">Notes</label>
-            <input id="note" class="input" name="note"  placeholder="" style="height: 100px" formControlName="note">
+            <input id="note" class="input" name="note"  placeholder="" style="height: 100px" [(ngModel)]="employee.note" >
         </div><br>
         <div class="buttonParent">
             <button [routerLink]="['']" routerLinkActive="router-link-active" class="btn btn-outline-primary">Back</button>
@@ -146,3 +146,4 @@
         </div>
     </form>
 </div>
+
